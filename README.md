@@ -260,7 +260,7 @@ bob.save(function (err) {
 
 ## Deploying
 
-If we want Heroku to use a MongoDB, we have to use a 3rd party extension, Mongolab. Mongolab gives you a small amount of space on their cloud database servers. You get a special [URI]() that you can use to connect to your Mongolab database. Fork this repo and type in
+If we want Heroku to use a MongoDB, we have to use a 3rd party extension, Mongolab. Mongolab gives you a small amount of space on their cloud database servers. You get a special [URI](http://en.wikipedia.org/wiki/URI) that you can use to connect to your Mongolab database. Fork this repo and type in
 
 ```
 $ heroku create
