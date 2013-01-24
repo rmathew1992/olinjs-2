@@ -159,7 +159,7 @@ app.configure(function(){
 ## Mongo
 [MongoDB](http://en.wikipedia.org/wiki/Mongodb) is a NoSQL database system that stores data in a form similar to JSON. We'll be using it as our primary method of storage.
 
-In order to use Mongo locally, we need to start up the Mongo [daemon](http://en.wikipedia.org/wiki/Daemon_(computing)). Open up your terminal and type this in
+In order to use Mongo locally, we need to start up the Mongo [daemon](http://en.wikipedia.org/wiki/Daemon_(computing). Open up your terminal and type this in
 ```
 $ mongod
 all output going to: /usr/local/var/log/mongodb/mongo.log
