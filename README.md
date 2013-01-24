@@ -1,6 +1,6 @@
 #olin.js #2 — express & mongo
 
-We'll be covering the basics of Express and MongoDB (through Mongoose). We'll need to install Mongo with the following on ubuntu
+We'll be covering the basics of Express and MongoDB (through Mongoose). Install MongoDB with the following commands on Ubuntu:
 
 ```
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10;
@@ -9,15 +9,16 @@ sudo apt-get update;
 sudo apt-get install mongodb-10gen;
 ```
 
-If you're on OSX
+If you're on OSX, run:
+
 ```
 brew install mongodb
 ```
 
 ## Express
-Now that we've explored node a little, let's abstract the details away by using the [express](http://expressjs.com/) framework.
 
-In Node we had to write something like this
+Now that we've explored Node.js a little, we will abstract the details away with the [express](http://expressjs.com/) development framework.
+Before, in the Node Beginner's Book, our code looked a lot like this:
 
 ```js
 var http = require("http");
@@ -29,7 +30,11 @@ http.createServer(function(request, response) {
 }).listen(8888);
 ```
 
-Let's make the same thing in Express. Create a file named `app.js` and paste in the following
+Let's write the equivalent code in Express. First, run `git clone https://github.com/olinjs/olinjs-2.git` as in the last
+lesson to clone this repository. Next, in the `olinjs-2/` folder, run the command `npm install`. (If this triggers lots of
+lines with errors, run `sudo npm install` instead, or send us an email).
+
+Next, create a file named `app.js` in that folder and paste in the following:
 
 ```js
 var express = require('express');
@@ -42,16 +47,24 @@ app.get('/', function(req, res){
 app.listen(3000);
 ```
 
-Now go to http://localhost:3000 and you should see `hello world`
+Inside the `olinjs-2/` folder, run the command `node app`. While that's running,
+go to `http://localhost:3000` in your web browser and you should see the following:
 
-Express is a light wrapper around Node. What are the differences? Here are some of the big ones:
-* Routing. Instead of parsing the response url ourselves, we can just tell express to route matching urls to specific functions.  
-* Response sending. You can do ```res.send``` instead of writing response headers
-* Handling views/templating (kinda). We haven't gotten here yet, but we'll touch on this later. 
+```
+hello world
+```
 
-Let's go back to our Express app. We want more than just hello world. Let's make it show `hello olin` when we go to /olin.
+Great! You're so cool.
 
-Change `app.js` to the following
+Express makes writing web servers in Node much easier. Here are some of the important differences between the examples you did in the book and Express:
+
+* **Routing**. Instead of trying to parse the URL the user is at ourselves, we can just tell Express to match an individual path with a function.  
+* **Sending a response**. Express takes care of setting many obvious response headers for you. Express will also handle sending files like images, music, audio, or `.html` files from a folder easily.
+* **Handling templates (kinda).** We haven't gotten here yet, but we'll touch on this later. 
+
+Let's go back to our `app.js`. We want more than just hello world. Let's make Express show the string `hello olin` when we go to `http://localhost:3000/olin`.
+
+Delete what was in `app.js` and replace it with the following:
 
 ```js
 var express = require('express');
@@ -68,9 +81,10 @@ app.get('/olin', function(req, res){
 app.listen(3000);
 ```
 
-So what's `app.get` do? It tells express that every time we have a `GET` request from a client (the browser). We'll learn more about this in Routing.
+So what does `app.get` do? It tells express that every time we have a `GET` request from a client (the browser). We'll learn more about this in Routing.
 
 ###Routing
+
 Before we talk about routing, let's talk a bit about clients vs servers. For our purposes, we can think of **clients** as the things that view webpages, such as our browsers. On the other hand, **servers** are the things that give our browsers the things to render.
 
 Routing is the process of serving up different pages for different urls. When you go to www.mycoolsite.com/ your computer goes out on the internet and asks mycoolsite's server for a page. Mycoolsite's server then sees that request and sends back information to your computer in the form of html. This html is then rendered on your browser.
@@ -169,6 +183,7 @@ app.configure(function(){
 ```
 
 ## Mongo
+
 [MongoDB](http://en.wikipedia.org/wiki/Mongodb) is a NoSQL database system that stores data in a form similar to JSON. We'll be using it as our primary method of storage.
 
 In order to use Mongo locally, we need to start up the Mongo [daemon](http://en.wikipedia.org/wiki/Daemon_(computing). Open up your terminal and type this in
