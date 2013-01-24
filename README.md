@@ -1,6 +1,18 @@
 #olin.js #2 — express & mongo
 
-We'll be covering the basics of Express and MongoDB (through Mongoose).
+We'll be covering the basics of Express and MongoDB (through Mongoose). We'll need to install Mongo with the following on ubuntu
+
+```
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10;
+echo "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen" | sudo tee /etc/apt/sources.list.d/10gen.list;
+sudo apt-get update;
+sudo apt-get install mongodb-10gen;
+```
+
+If you're on OSX
+```
+brew install mongodb
+```
 
 ## Express
 Now that we've explored node a little, let's abstract the details away by using the [express](http://expressjs.com/) framework.
