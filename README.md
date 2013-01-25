@@ -15,6 +15,8 @@ If you're on OSX, run:
 brew install mongodb
 ```
 
+Now go here http://imdone.herokuapp.com/. I just created this, so we're gonna test drive this tool and see if it helps us with class.
+
 ## Express
 
 Now that we've explored Node.js a little, we will abstract the details away with the [express](http://expressjs.com/) development framework.
