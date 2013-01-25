@@ -15,8 +15,6 @@ If you're on OSX, run:
 brew install mongodb
 ```
 
-Now go here http://imdone.herokuapp.com/. I just created this, so we're gonna test drive this tool and see if it helps us with class.
-
 ## Express
 
 Now that we've explored Node.js a little, we will abstract the details away with the [express](http://expressjs.com/) development framework.
@@ -91,7 +89,7 @@ Before we talk about routing, let's talk a bit about clients vs servers. For our
 
 Routing is the process of serving up different pages for different urls. When you go to www.mycoolsite.com/ your computer goes out on the internet and asks mycoolsite's server for a page. Mycoolsite's server then sees that request and sends back information to your computer in the form of html. This html is then rendered on your browser.
 
-If you go to www.mycoolsite.com/olin mycoolsite's servers obviously can't send you the same data it sent www.mycoolsite.com/. So mycoolsite's servers needs to differentiate ```/``` from ```/olin```. This process is known as routing.
+If you go to www.mycoolsite.com**/** mycoolsite's servers obviously can't send you the same data it sent www.mycoolsite.com**/olin**. So mycoolsite's servers needs to differentiate ```/``` from ```/olin```. This process is known as routing.
 
 In the Node beginner book, we did routing through something like 
 
@@ -100,27 +98,27 @@ var pathname = url.parse(request.url).pathname;
 route(handle, pathname, response, request);
 ```
 
-Now, instead of us writing parsers for the route, in Express we can do something like 
+Instead of writing code ourselves to handle the route, Express can do this for us:
 
 ```js
-app.get('/', function(req, res){
+app.get('/', function (req, res){
   res.send('hello world');
 });
 
-app.get('/olin', function(req, res){
+app.get('/olin', function (req, res){
   res.send('hello olin');
 });
 ```
 
-These two routes are for the index page (/) and the olin page (/olin). 
+These two routes we created are for the index page (/) and the olin page (/olin). 
 
-So what does `app.get` do? It tells express that we want to execute the second argument (the anonymous function) every time the server has a `GET` request at that specific route. The `GET` request is specified by the http standard. There are many more than just the `GET` request, and you can [view the entire list on wikipedia](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods). But for now, all you need to know are
+So what does `app.get` do? It tells express that every time that particular route (the first string argument) receives a `HTTP GET` request, we want to execute the anonymous function (the second argument). `HTTP` lets you perform different *types* of requests for a particular route, and these types are called **methods**. `GET` is just one of the methods you can perform, and is the most common (every time request an image or a script for example). You can [view the other types of HTTP methods on wikipedia](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods). But for now, let's only consider these two:
 
-* `GET` returns a resource (such as a message or an html page). This is used for when your browser wants to read information from a server.
+* `GET` returns a resource (such as an image or an html page). This is used for when your browser wants to read information from a server.
 * `POST` is used for when your browser wants to send information over to the server. For example, when you fill out an online form, that data is sent over to the server as `POST` data.
 
 
-###Generating an Express app
+###Automatically Generate an Express app
 
 Express also comes with a set of nifty tools to get you started. You can make a new Express app by going into a directory and running 
 
@@ -186,7 +184,7 @@ app.configure(function(){
 
 ## Mongo
 
-[MongoDB](http://en.wikipedia.org/wiki/Mongodb) is a NoSQL database system that stores data in a form similar to JSON. We'll be using it as our primary method of storage.
+[MongoDB](http://en.wikipedia.org/wiki/Mongodb) is a database (system for storing data every time you run an application) that stores data in a form like JSON. We'll be using it as our primary method of storage.
 
 In order to use Mongo locally, we need to start up the Mongo [daemon](http://en.wikipedia.org/wiki/Daemon_(computing). Open up your terminal and type this in
 ```
